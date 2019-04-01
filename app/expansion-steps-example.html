@@ -1,56 +1,66 @@
-<div class="switch">
-	<mat-button-toggle-group #group="matButtonToggleGroup" value="EMPLOYEES">
-		<mat-button-toggle value="EMPLOYEES">
-			Employees
-			<span class="badge">7456</span>
-		</mat-button-toggle>
-		<mat-button-toggle value="AGENCIES">
-			Agencies
-      <span class="badge">10</span>
-		</mat-button-toggle>
-		<mat-button-toggle value="AGENCY_UNITS">
-			Agency units
-      <span class="badge">2</span>
-		</mat-button-toggle>
-    <mat-button-toggle value="POLICIES">
-			Policies
-      <span class="badge">20247</span>
-		</mat-button-toggle>
-	</mat-button-toggle-group>
-</div>
+<div style="max-width:1200px; min-height: 100vh">
+	<div class="switch">
+		<mat-button-toggle-group #group="matButtonToggleGroup" value="EMPLOYEES">
+      <mat-button-toggle value="GENERAL_AGREEMENTS">
+        General Agreements
+        <span class="badge">1</span>
+      </mat-button-toggle>
+      <mat-button-toggle value="BINDING_AGREEMENTS">
+        Binding Agreements
+        <span class="badge">1</span>
+      </mat-button-toggle>
+			<mat-button-toggle value="EMPLOYEES">
+				Employees
+				<span class="badge">7456</span>
+      </mat-button-toggle>
+      <mat-button-toggle value="AGENCIES">
+        Agencies
+        <span class="badge">10</span>
+      </mat-button-toggle>
+      <mat-button-toggle value="AGENCY_UNITS">
+        Agency units
+        <span class="badge">2</span>
+      </mat-button-toggle>
+      <mat-button-toggle value="POLICIES">
+        Policies
+        <span class="badge">20247</span>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
 
-<section class="product-line" *ngFor="let i of [1,2,3]">
-  <h1 class="title">Product line {{i}}</h1>
+  <section class="product-line" *ngFor="let i of items(3)">
+    <h1 class="title">Product line {{i}}</h1>
 
-  <mat-accordion>
-    <ng-container *ngFor="let j of [1,2,3,4,5,6]">
-      <mat-expansion-panel *ngIf="j % i == 0">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            General Agreement {{i}}.{{j}}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{i*j*j}} assignments
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+    <mat-accordion>
+      <ng-container *ngFor="let j of items(4)">
+        <mat-expansion-panel *ngIf="j % i == 0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-checkbox>General Agreement {{i}}.{{j}}</mat-checkbox>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{i*j*j}} assignments
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            
+          <mat-selection-list>
+            <mat-list-option checkboxPosition="before" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Jon Doe {{e}}</h3>
+              <p matLine>Agency, Agency Unit {{page.pageIndex}}</p>
+            </mat-list-option>
+          </mat-selection-list>
+          <mat-divider></mat-divider>
           
-        <mat-selection-list>
-          <mat-list-option checkboxPosition="before" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
-            <h3 matLine>Jon Doe {{e}}</h3>
-            <p matLine>Agency, Agency Unit {{page.pageIndex}}</p>
-          </mat-list-option>
-        </mat-selection-list>
-        <mat-divider></mat-divider>
-        
-        <mat-paginator [length]="i*j*j" 
-                       pageSize="5" 
-                       #page></mat-paginator>
-      </mat-expansion-panel>
-    </ng-container>
-  </mat-accordion>
-</section>
+          <mat-paginator [length]="i*j*j" 
+                        pageSize="5" 
+                        #page></mat-paginator>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </section>
 
-<div class="actions">
-  <button mat-stroked-button matTooltip="Show selected">Selected: 21</button>
-  <button mat-raised-button color="accent">Transfer</button>
+  <div class="actions">
+    <button mat-stroked-button matTooltip="Show selected">Selected: 21</button>
+    <button mat-raised-button color="accent">Transfer</button>
+  </div>
 </div>
