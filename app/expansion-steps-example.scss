@@ -1,0 +1,52 @@
+.switch {
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  font-size: 0.75em;
+  border-radius: 1em;
+  display: inline-block;
+  min-width: 1em;
+  line-height: 1;
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 5px;
+}
+
+.mat-button-toggle {
+  transition: background-color 0.3s ease;
+}
+
+.mat-button-toggle-checked {
+  background-color: #3f51b5;
+  color: #fff;
+
+  .badge {
+    background-color: #fff;
+    color: #3f51b5; 
+  }
+}
+
+.product-line {
+  margin-top: 2rem;
+
+  .title {
+    color: #777;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .mat-expansion-panel-header-title {
+    flex: 1 1 auto;
+  }
+
+  .mat-expansion-panel-header-description {
+    flex: 0 1 auto;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
