@@ -11,13 +11,19 @@ type Assignment = {
   styleUrls: ['expansion-steps-example.scss'],
 })
 export class ExpansionStepsExample {
-  items(n: number): any[] {
-    const array = Array(n);
+  created = {};
 
-    for (let i = 0; i < n; i++) {
-      array[i]=i+1;
+  items(n: number): any[] {
+    if (!this.created[n]) {
+      const array = Array(n);
+
+      for (let i = 0; i < n; i++) {
+        array[i] = i + 1;
+      }
+      this.created[n] = array;
     }
 
-    return array;
+
+    return this.created[n];
   }
 }
