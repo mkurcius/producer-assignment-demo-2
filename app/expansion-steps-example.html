@@ -1,0 +1,89 @@
+<mat-accordion class="assignments">
+	<mat-expansion-panel hideToggle *ngFor="let assignment of assignments">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				{{assignment.productLine}}
+			</mat-panel-title>
+			<mat-panel-description>
+				{{assignment.generalAgreements.length}} assignments
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+
+		<mat-accordion>
+			<mat-expansion-panel hideToggle *ngFor="let generalAgreement of assignment.generalAgreements">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						{{generalAgreement}}
+					</mat-panel-title>
+					<mat-panel-description>
+						74 assignments
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+
+				<div class="items">
+					<mat-selection-list dense>
+						<mat-list-option matTooltip="Select all agencies">
+							<h3 mat-subheader class="group-header">
+								<span>Agencies</span>
+                <span>2 assignments</span>
+              </h3>
+            </mat-list-option>
+            
+            <mat-list-option>
+							Agency 1
+						</mat-list-option>
+            <mat-list-option>
+							Agency 2
+						</mat-list-option>
+					</mat-selection-list>
+
+          <mat-divider></mat-divider>
+          
+          <mat-selection-list dense>
+            <mat-list-option matTooltip="Select all agency units">
+							<h3 mat-subheader class="group-header">
+								<span>Agency Units</span>
+                <span>2 assignments</span>
+              </h3>
+            </mat-list-option>
+             <mat-list-option>
+							<h3 matLine>Agency Unit 1</h3>
+              <p matLine>Some Agency</p>
+						</mat-list-option>
+            <mat-list-option>
+							<h3 matLine>Agency Unit 2</h3>
+              <p matLine>Some Agency 2</p>
+						</mat-list-option>
+          </mat-selection-list>
+
+          <mat-divider></mat-divider>
+
+          <mat-selection-list dense>
+            <mat-list-option matTooltip="Select all employees">
+							<h3 mat-subheader class="group-header">
+								<span>Employees</span>
+                <span>200 assignments</span>
+              </h3>
+            </mat-list-option>
+						<mat-list-option>
+							<h3 matLine>Jon Doe</h3>
+              <p matLine>Agency Unit, Agency</p>
+						</mat-list-option>
+            <mat-list-option>
+							<h3 matLine>Jon Doe 2</h3>
+              <p matLine>Agency Unit 2, Agency 2</p>
+						</mat-list-option>
+            <mat-list-option>
+							<h3 matLine>Jon Doe 3</h3>
+              <p matLine>Agency Unit 3, Agency 3</p>
+						</mat-list-option>
+					</mat-selection-list>
+				</div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+		<mat-action-row>
+			<button mat-button color="primary">Transfer All</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
