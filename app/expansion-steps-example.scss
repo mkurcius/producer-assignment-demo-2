@@ -31,17 +31,41 @@
 .product-line {
   margin-top: 2rem;
 
-  .title {
-    color: #777;
-    border-bottom: 1px solid #ccc;
-  }
+.header {
+   border-bottom: 1px solid #ccc;
+   color: #777;
+   margin-bottom: 1rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-left: 16px;
+   padding-right: 40px;
 
-  .mat-expansion-panel-header-title {
+   .title {
+     margin: 0;
+   }
+
+   mat-checkbox {
+     font-size: 15px;
+   }
+}
+  
+
+  mat-panel-title, mat-panel-description {
     flex: 1 1 auto;
+    align-items: center;
   }
 
-  .mat-expansion-panel-header-description {
+  .select {
     flex: 0 1 auto;
+    align-items: center;
+  }
+
+  .footer {
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

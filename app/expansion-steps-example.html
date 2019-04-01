@@ -1,9 +1,9 @@
 <div style="max-width:1200px; min-height: 100vh">
 	<div class="switch">
 		<mat-button-toggle-group #group="matButtonToggleGroup" value="EMPLOYEES">
-      <mat-button-toggle value="GENERAL_AGREEMENTS">
-        General Agreements
-        <span class="badge">1</span>
+			<mat-button-toggle value="GENERAL_AGREEMENTS">
+				General Agreements
+				<span class="badge">1</span>
       </mat-button-toggle>
       <mat-button-toggle value="BINDING_AGREEMENTS">
         Binding Agreements
@@ -29,38 +29,47 @@
   </div>
 
   <section class="product-line" *ngFor="let i of items(3)">
-    <h1 class="title">Product line {{i}}</h1>
+    <div class="header">
+    <h1 class="title">
+      Product line {{i}}
+    </h1>
+    <mat-checkbox [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+    </div>
 
     <mat-accordion>
       <ng-container *ngFor="let j of items(4)">
-        <mat-expansion-panel *ngIf="j % i == 0">
+        <mat-expansion-panel *ngIf="j % i == 0" [hideToggle]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-checkbox>General Agreement {{i}}.{{j}}</mat-checkbox>
+              General Agreement {{i}}.{{j}}
             </mat-panel-title>
             <mat-panel-description>
               {{i*j*j}} assignments
             </mat-panel-description>
+            <mat-panel-description class="select">
+              <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+            </mat-panel-description>
           </mat-expansion-panel-header>
             
-          <mat-selection-list>
-            <mat-list-option checkboxPosition="before" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
-              <h3 matLine>Jon Doe {{e}}</h3>
-              <p matLine>Agency, Agency Unit {{page.pageIndex}}</p>
+          <mat-selection-list dense>
+            <mat-list-option checkboxPosition="after" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Jon Doe {{e}} Agency, Agency Unit {{page.pageIndex}}</h3>
             </mat-list-option>
           </mat-selection-list>
-          <mat-divider></mat-divider>
-          
-          <mat-paginator [length]="i*j*j" 
-                        pageSize="5" 
-                        #page></mat-paginator>
+
+          <div [hidden]="i*j*j < 5">
+            <mat-divider></mat-divider>
+            <mat-paginator [length]="i*j*j" 
+                          pageSize="5" 
+                          #page></mat-paginator>
+          </div>
         </mat-expansion-panel>
       </ng-container>
     </mat-accordion>
   </section>
 
   <div class="actions">
-    <button mat-stroked-button matTooltip="Show selected">Selected: 21</button>
-    <button mat-raised-button color="accent">Transfer</button>
+    <span>Selected: 21</span>
+    <button mat-raised-button color="accent">Transfer All</button>
   </div>
 </div>
