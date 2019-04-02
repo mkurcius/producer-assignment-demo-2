@@ -50,14 +50,14 @@
    }
 }
   
-
-  mat-panel-title, mat-panel-description {
-    flex: 1 1 auto;
+  mat-panel-title {
+    flex: 1 1 percentage(1/3);
     align-items: center;
   }
 
-  .select {
-    flex: 0 1 auto;
+  mat-panel-description {
+    flex: 2 1 percentage(2/3);
+    justify-content: space-between;
     align-items: center;
   }
 
