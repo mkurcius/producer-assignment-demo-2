@@ -1,42 +1,154 @@
 <div style="max-width:1200px; min-height: 100vh">
 	<div class="switch">
-		<mat-button-toggle-group #group="matButtonToggleGroup" value="EMPLOYEES">
+		<mat-button-toggle-group #group="matButtonToggleGroup" value="GENERAL_AGREEMENTS">
 			<mat-button-toggle value="GENERAL_AGREEMENTS">
 				General Agreements
-				<span class="badge">1</span>
+				<span class="badge">27019</span>
       </mat-button-toggle>
       <mat-button-toggle value="BINDING_AGREEMENTS">
         Binding Agreements
-        <span class="badge">1</span>
-      </mat-button-toggle>
-			<mat-button-toggle value="EMPLOYEES">
-				Employees
-				<span class="badge">7456</span>
-      </mat-button-toggle>
-      <mat-button-toggle value="AGENCIES">
-        Agencies
         <span class="badge">10</span>
-      </mat-button-toggle>
-      <mat-button-toggle value="AGENCY_UNITS">
-        Agency units
-        <span class="badge">2</span>
-      </mat-button-toggle>
-      <mat-button-toggle value="POLICIES">
-        Policies
-        <span class="badge">20247</span>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
-  <section class="product-line" *ngFor="let i of items(3)">
-    <div class="header">
+<section style="margin-top: 2rem">
+  <div class="product-line" *ngFor="let i of items(3)">
+    <label class="header product-line--header">
       <h1 class="title">
         Product line {{i}}
       </h1>
       <mat-checkbox [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+    </label>
+
+    <ng-container *ngFor="let j of items(4)">
+      <div class="general-agreement" *ngIf="j % i == 0">
+        <label class="header general-agreement--header">
+          <h3 class="title">General Agreement {{i}}.{{j}}</h3>
+          <mat-checkbox [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+        </label>
+      
+      <mat-accordion>
+      <!-- Employees -->
+        <mat-expansion-panel [hideToggle]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Employees
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>{{i*j*j}} assignments</span>
+              <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-selection-list dense>
+            <mat-list-option checkboxPosition="after" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Jon Doe {{e}} Agency, Agency Unit {{page.pageIndex}}</h3>
+            </mat-list-option>
+          </mat-selection-list>
+
+          <div [hidden]="i*j*j < 5">
+            <mat-divider></mat-divider>
+            <mat-paginator [length]="i*j*j" 
+                          pageSize="5" 
+                          #page></mat-paginator>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- Agencies -->
+        <mat-expansion-panel [hideToggle]="true">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+              Agencies
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>{{i*j*j}} assignments</span>
+              <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-selection-list dense>
+            <mat-list-option checkboxPosition="after" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Agency {{page.pageIndex + 1}}</h3>
+            </mat-list-option>
+          </mat-selection-list>
+
+          <div [hidden]="i*j*j < 5">
+            <mat-divider></mat-divider>
+            <mat-paginator [length]="i*j*j" 
+                          pageSize="5" 
+                          #page></mat-paginator>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- Agency Units -->
+        <mat-expansion-panel [hideToggle]="true">
+          <mat-expansion-panel-header>
+          <mat-panel-title>
+            Agency units
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>{{i*j*j}} assignments</span>
+            <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+          </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-selection-list dense>
+            <mat-list-option checkboxPosition="after" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Agency Unit {{page.pageIndex + 1}}</h3>
+            </mat-list-option>
+          </mat-selection-list>
+
+          <div [hidden]="i*j*j < 5">
+            <mat-divider></mat-divider>
+            <mat-paginator [length]="i*j*j" 
+                          pageSize="5" 
+                          #page></mat-paginator>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- Policies -->
+        <mat-expansion-panel [hideToggle]="true">
+          <mat-expansion-panel-header>
+          <mat-panel-title>
+            Policies
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>{{i*j*j}} assignments</span>
+            <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+          </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-selection-list dense>
+            <mat-list-option checkboxPosition="after" *ngFor="let e of items(i*j*j) | slice:page.pageIndex*page.pageSize:(page.pageIndex+1)*page.pageSize">
+              <h3 matLine>Policy {{page.pageIndex + 1}}</h3>
+            </mat-list-option>
+          </mat-selection-list>
+
+          <div [hidden]="i*j*j < 5">
+            <mat-divider></mat-divider>
+            <mat-paginator [length]="i*j*j" 
+                          pageSize="5" 
+                          #page></mat-paginator>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      </div>
+    </ng-container>
+
+    <div class="general-agreement">
+      <label class="header general-agreement--header">
+        <h3 class="title">Super duper general agreement</h3>
+        <mat-checkbox [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
+      </label>
+
+      <div class="all-assignments">
+        Has assignments to all Employees, Agencies and Agency Units connected to this general agreement
+      </div>
+    </div>
     </div>
 
-    <mat-accordion>
+    <!-- <mat-accordion>
       <ng-container *ngFor="let j of items(4)">
         <mat-expansion-panel *ngIf="j % i == 0" [hideToggle]="true">
           <mat-expansion-panel-header>
@@ -47,10 +159,10 @@
               <span>{{i*j*j}} assignments</span>
               <mat-checkbox (click)="$event.stopPropagation()" [disableRipple]="true" labelPosition="before">Select All</mat-checkbox>
             </mat-panel-description>
-          </mat-expansion-panel-header>
+          </mat-expansion-panel-header> -->
            
            <!-- Employees -->
-           <mat-expansion-panel [hideToggle]="true">
+           <!-- <mat-expansion-panel [hideToggle]="true">
              <mat-expansion-panel-header>
               <mat-panel-title>
                 Employees
@@ -73,10 +185,10 @@
                             pageSize="5" 
                             #page></mat-paginator>
             </div>
-          </mat-expansion-panel>
+          </mat-expansion-panel> -->
 
           <!-- Agencies -->
-          <mat-expansion-panel [hideToggle]="true">
+          <!-- <mat-expansion-panel [hideToggle]="true">
              <mat-expansion-panel-header>
               <mat-panel-title>
                 Agencies
@@ -99,10 +211,10 @@
                             pageSize="5" 
                             #page></mat-paginator>
             </div>
-          </mat-expansion-panel>
+          </mat-expansion-panel> -->
 
           <!-- Agency Units -->
-          <mat-expansion-panel [hideToggle]="true">
+          <!-- <mat-expansion-panel [hideToggle]="true">
             <mat-expansion-panel-header>
             <mat-panel-title>
               Agency units
@@ -125,10 +237,10 @@
                             pageSize="5" 
                             #page></mat-paginator>
             </div>
-          </mat-expansion-panel>
+          </mat-expansion-panel> -->
 
           <!-- Policies -->
-          <mat-expansion-panel [hideToggle]="true">
+          <!-- <mat-expansion-panel [hideToggle]="true">
             <mat-expansion-panel-header>
             <mat-panel-title>
               Policies
@@ -154,11 +266,11 @@
           </mat-expansion-panel>
         </mat-expansion-panel>
       </ng-container>
-    </mat-accordion>
-  </section>
+    </mat-accordion> -->
 
-  <div class="actions">
+
+<div class="actions">
     <span>Selected: 21</span>
     <button mat-raised-button color="accent">Transfer All</button>
   </div>
-</div>
+</section>

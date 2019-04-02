@@ -28,45 +28,66 @@
   }
 }
 
-.product-line {
-  margin-top: 2rem;
-
 .header {
-   border-bottom: 1px solid #ccc;
-   color: #777;
-   margin-bottom: 1rem;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding-left: 16px;
-   padding-right: 40px;
+  margin-top: 1rem;
+  border-bottom: 1px solid #ccc;
+  color: #6a6a6a;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
 
-   .title {
-     margin: 0;
-   }
+  .title {
+    margin: 0;
+  }
 
-   mat-checkbox {
-     font-size: 15px;
-   }
+  mat-checkbox {
+    font-size: 15px;
+  }
 }
+
+.product-line--header {
   
-  mat-panel-title {
-    flex: 1 1 percentage(1/3);
-    align-items: center;
-  }
+}
 
-  mat-panel-description {
-    flex: 2 1 percentage(2/3);
-    justify-content: space-between;
-    align-items: center;
-  }
+.product-line + .product-line {
+  margin-top: 3.5rem;
+}
 
-  .footer {
-    padding-top: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.general-agreement--header {
+  padding-right: 20px;
+}
+
+.general-agreement {
+  padding-left: 1rem;
+}
+
+.general-agreement + .general-agreement {
+  margin-top: 1.5rem;
+}
+
+.all-assignments {
+  text-align: center;
+  color: #424242;
+}
+
+mat-panel-title {
+  flex: 1 1 percentage(1/3);
+  align-items: center;
+}
+
+mat-panel-description {
+  flex: 1 1 percentage(2/3);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .actions {

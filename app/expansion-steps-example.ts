@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ChangeDetectionStrategy } from '@angular/core';
 
 type Assignment = {
   productLine: string
@@ -9,6 +9,7 @@ type Assignment = {
   selector: 'expansion-steps-example',
   templateUrl: 'expansion-steps-example.html',
   styleUrls: ['expansion-steps-example.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpansionStepsExample {
   created = {};
